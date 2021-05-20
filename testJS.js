@@ -937,7 +937,34 @@ let f1500 = delay(alert, 1500);
 f1000("test"); // показывает "test" после 1000 мс
 f1500("test");
  */
-function debounce(f, ms) {
+/* function debounce(f, ms) {
+  let coolDown = false;
+  return function () {
+    if (coolDown) return;
+    f.apply(this, arguments);
+    coolDown = true;
+    setTimeout(() => (coolDown = false), ms);
+  };
+} */
+/* function spy(func) {
+  function wrapper(...arg) {
+    wrapper.calls.push(arg);
+    return func.apply(this, arguments);
+  }
+  wrapper.calls = [];
+  return wrapper;
+}
+ */
+
+/* function delay(f, ms) {
+  return function () {
+    setTimeout(() => f.apply(this, arguments), ms);
+  };
+}
+let f5000 = delay(console.log("5s"), 5000);
+ */
+
+/* function debounce(f, ms) {
   let coolDown = false;
   return function () {
     if (coolDown) return;
@@ -946,3 +973,70 @@ function debounce(f, ms) {
     setTimeout(() => (coolDown = false), ms);
   };
 }
+ */
+
+/* function throttle(func, ms) {
+  let isThrottled = false,
+    saveArg,
+    saveThis;
+  function wrapper() {
+    if (isThrottled) {
+      saveArg = arguments;
+      saveThis = this;
+      return;
+    }
+    func.apply(this, arguments);
+    isThrottled = true;
+  }
+  setTimeout(function () {
+    isThrottled = false;
+    if (saveArg) {
+      wrapper.apply(saveThis, saveArg);
+      saveArg = saveThis = null;
+    }
+  }, ms);
+  return wrapper;
+}
+ */
+
+/* function throttle(func, ms) {
+  let isThrottled = false;
+  let savedArg;
+  let savedThis;
+
+  function wrapper() {
+    if (isThrottled) {
+      savedArg = arguments;
+      savedThis = this;
+      return;
+    }
+    func.apply(this, arguments);
+    isThrottled = true;
+  }
+  setTimeout(function () {
+    isThrottled = false;
+    wrapper.apply(savedThis, savedArg);
+    savedArg = savedThis = null;
+  }, ms);
+  return wrapper;
+}
+ */
+function askPassword(ok, fail) {
+  let password = prompt("Password?", "");
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: "Вася",
+
+  loginOk() {
+    console.log(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    console.log(`${this.name} failed to log in`);
+  },
+};
+
+askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
