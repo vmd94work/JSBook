@@ -1021,7 +1021,7 @@ let f5000 = delay(console.log("5s"), 5000);
   return wrapper;
 }
  */
-function askPassword(ok, fail) {
+/* function askPassword(ok, fail) {
   let password = prompt("Password?", "");
   if (password == "rockstar") ok();
   else fail();
@@ -1040,3 +1040,19 @@ let user = {
 };
 
 askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+ */
+/* function askPassword(ok, fail) {
+  let password = prompt("Password?", "");
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: "John",
+
+  login(result) {
+    console.log(this.name + (result ? " logged in" : " failed to log in"));
+  },
+};
+
+askPassword(user.login.bind(user, true), user.login.bind(user, false)); */
