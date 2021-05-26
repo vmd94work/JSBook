@@ -1056,3 +1056,47 @@ let user = {
 };
 
 askPassword(user.login.bind(user, true), user.login.bind(user, false)); */
+const arr = [1, 1, 2, 3, 4, 4, 5, 6, 6, 7, 8];
+
+/* function dublicate(arr) {
+  const uniqueArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const currentValue = arr[i];
+    let count = 0;
+    for (let j = 0; j < arr.length; j++) {
+      if (currentValue === arr[j]) {
+        count++;
+      }
+    }
+    if (count === 1) {
+      uniqueArr.push(currentValue);
+    }
+  }
+  return uniqueArr;
+}
+console.log(dublicate(arr));
+ */
+/* function checkDublicate(array) {
+  let uniqueArr = [];
+  let obj = {};
+
+  for (let i = 0; i < array.length; i++) {
+    let currentValue = array[i];
+    if (!(currentValue in obj)) {
+      obj[currentValue] = 1;
+    } else {
+      obj[currentValue] += 1;
+    }
+  }
+  const keys = Object.keys(obj);
+  keys.forEach((key) => {
+    if (obj[key] === 1) {
+      uniqueArr.push(key);
+    }
+  });
+  return uniqueArr;
+}
+
+console.log(checkDublicate(arr));
+ */
